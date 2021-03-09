@@ -1,14 +1,15 @@
 #include "game.h"
 #include <iostream>
 #include <thread>
+#include <future>
 #include <string>
 #include "SDL.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
       engine(dev()),
-      random_w(0, static_cast<int>(grid_width)),
-      random_h(0, static_cast<int>(grid_height)) {
+      random_w(1, static_cast<int>(grid_width-1)),
+      random_h(1, static_cast<int>(grid_height-1)) {
   PlaceFood();
 }
 
@@ -25,9 +26,6 @@ void Game::Run(Controller  &controller, Renderer renderer,
   int frame_count = 0;
   bool running = true;
 
-  //NEW  create promise and future
-    std::promise<Snake::Direction> prms;
-    std::future<Snake::Direction> ftr = prms.get_future();   
 
   while (running) {
     frame_start = SDL_GetTicks();
@@ -36,12 +34,27 @@ void Game::Run(Controller  &controller, Renderer renderer,
     //controller.HandleInput(running, snake);
 
     //NEW start thread controller.HandleInput
-    std::thread t(&Controller::HandleInput,controller,std::ref(running),std::ref(snake));
+    //std::thread t1(&Controller::HandleInput,controller,std::ref(running),std::ref(snake));
+     //std::thread t1(&Controller::HandleInputp,controller,std::ref(running),std::ref(snake),std::move(prms)); 
+    //t1.join();
+
+    std::future<void> ftr1 = std::async(&Controller::HandleInput,&controller,std::ref(running),std::ref(snake));
+    //ftr1.wait();
+
+    //Update();
+   //std::thread t2(&Game::Update, this);
+    //std::thread t2(&Game::Updatep, this, std::ref(ftr));
+    //t2.join();
+    std::future<void> ftr2 = std::async(&Game::Update, this);
     
-    t.join();
-  
-    Update();
-    renderer.Render(snake, food);
+   
+    //renderer.Render(snake, food);
+    std::future<void> ftr3 = std::async(&Renderer::Render, &renderer, std::ref(snake), std::ref(food));
+    
+    ftr1.wait();
+    ftr2.wait();
+    ftr3.wait();
+
 
     frame_end = SDL_GetTicks();
 
@@ -73,6 +86,7 @@ void Game::PlaceFood() {
     y = random_h(engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
+    //std::lock_guard<std::mutex> lck(mtx_food);
     if (!snake.SnakeCell(x, y)) {
       food.x = x;
       food.y = y;
@@ -98,6 +112,7 @@ void Game::Update() {
     snake.speed += 0.02;
   }
 }
+
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
