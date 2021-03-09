@@ -19,7 +19,7 @@ class Game {
   int GetSize() const;
   
   //std::promise<Snake::Direction> prms;
-  //std::future<Snake::Direction> ftr = prms.get_future(); 
+  //std::future<Snake::Direction> ftr; 
 
  private:
   Snake snake;
@@ -32,8 +32,11 @@ class Game {
 
   int score{0};
 
+  mutable std::mutex mtx_food;	
+
   void PlaceFood();
   void Update();
+
 };
 
 #endif
