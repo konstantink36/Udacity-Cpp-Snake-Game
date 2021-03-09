@@ -2,15 +2,18 @@
 #include <iostream>
 #include "SDL.h"
 #include "snake.h"
+#include <future>
+#include <mutex>
 
 void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
                                  Snake::Direction opposite) const {
-  if (snake.direction != opposite || snake.size == 1) snake.direction = input;
+  std::lock_guard<std::mutex> lck(mtx1);
+  if (snake.direction != opposite || snake.size == 1) 
+  snake.direction = input;
   return;
 }
 
 void Controller::HandleInput(bool &running, Snake &snake) const {
-//static void Controller::HandleInput(bool &running, Snake &snake) {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
