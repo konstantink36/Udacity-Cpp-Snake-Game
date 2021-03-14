@@ -1,6 +1,7 @@
-include "snake.h"
+#include "snake.h"
 #include <cmath>
 #include <iostream>
+#include <mutex>
 
 void Snake::Update() {
   SDL_Point prev_cell{
