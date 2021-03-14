@@ -72,7 +72,7 @@ Thread 3 (started in game.cpp, line 43) runs Renderer. This requires a mutex/loc
 
 ## Other
 The number of poison pallets is set to three, to make the game not too difficult. 
-Ity could be set higher by changing poison2.cpp line 17 (use higher number than 3 in:  for(std::size_t i=0; i<3; i++) )
+Iy could be set higher by changing poison2.cpp line 17 (use higher number than 3 in:  for(std::size_t i=0; i<3; i++) )
 
 
 
