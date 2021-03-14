@@ -25,22 +25,22 @@ Main calls Game::Run to start the game loop.
 ## 10 C++ features have been implemented in this project:
 
 1. A variety of control structures are used in the project. The project code is organized into functions.
-3. Appropriate data and functions are grouped into classes. Data is accessed via member functions.
-5. All class data members are explicitly specified as public, protected, or private.
-7. Class constructors utilize member initialization lists.
-9. The project makes use of references in function declarations.
-11. The project follows the Rule of 5
-13. The project uses move semantics to move data.
-15. The project uses smart pointers. 
-17. The project uses multithreading.
-19. Mutexes and locks are used in the project.
+2. Appropriate data and functions are grouped into classes. Data is accessed via member functions.
+3. All class data members are explicitly specified as public, protected, or private.
+4. Class constructors utilize member initialization lists.
+5. The project makes use of references in function declarations.
+6. The project follows the Rule of 5
+7. The project uses move semantics to move data.
+8. The project uses smart pointers. 
+9. The project uses multithreading.
+10. Mutexes and locks are used in the project.
 
 
 
-Feature 1. is implemented in poison2.cpp lines 14 through 55
+Feature 1. is implemented in poison2.cpp lines 17, 19, 22
 
 Feature 2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison.
-           Member getter function e.g. poison2.cpp lines 52 -55
+            e.g. poison2.cpp line 52 -55
 
 Feature 3. is implemented in poison2.h lines 8 through 28
 
