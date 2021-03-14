@@ -7,7 +7,7 @@
 
 void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
                                  Snake::Direction opposite) const {
-  std::lock_guard<std::mutex> lck(mtx1);
+ // std::lock_guard<std::mutex> lck(mtx1);
   if (snake.direction != opposite || snake.size == 1) 
   snake.direction = input;
   return;
@@ -18,7 +18,10 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
       running = false;
-    } else if (e.type == SDL_KEYDOWN) {
+    } 
+    else if (e.type == SDL_KEYDOWN) {
+    //Protect Changedirection with lock, as Snake::Direction is shared across thread 1 and 2
+   std::lock_guard<std::mutex> lck(mtx1);
       switch (e.key.keysym.sym) {
         case SDLK_UP:
           ChangeDirection(snake, Snake::Direction::kUp,
