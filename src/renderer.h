@@ -27,7 +27,8 @@ class Renderer {
 //move assignment
   Renderer& operator=(Renderer&& other);
 
-  void Render(Snake const snake, SDL_Point const &food);
+  void Render(Snake const snake, SDL_Point const &food, std::vector<SDL_Point> const &body);
+
   void UpdateWindowTitle(int score, int fps);
 
  private:
@@ -36,6 +37,11 @@ class Renderer {
 
   //SDL_Renderer 
   std::shared_ptr<SDL_Renderer> sdl_renderer = nullptr;
+
+  //Image
+  //std::shared_ptr<SDL_Surface> sdl_image = nullptr;
+  SDL_Surface * image = nullptr;
+  SDL_Texture * texture = nullptr;
 
   const std::size_t screen_width;
   const std::size_t screen_height;
