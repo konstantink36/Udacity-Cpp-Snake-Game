@@ -5,7 +5,7 @@
 class Poison {
 public:
 Poison(std::size_t grid_width, std::size_t grid_height);
-void PlacePoison(Snake & snake, SDL_Point food);
+void PlacePoison(Snake & snake, SDL_Point & food);
 
 bool PoisonCell(int x, int y);
 bool FoodCell(int x, int y);
