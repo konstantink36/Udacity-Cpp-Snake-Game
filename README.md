@@ -30,6 +30,7 @@ In this project, you can build your own C++ application or extend this Snake gam
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
+## Project description
 
 1. A variety of control structures are used in the project. The project code is organized into functions.
 
