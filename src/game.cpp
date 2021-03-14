@@ -26,21 +26,20 @@ void Game::Run(Controller  &controller, Renderer renderer, Poison &poison,
   int frame_count = 0;
   bool running = true;
 
-
   while (running) {
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
 
     //Thread 1 runs controller.HandleInput(running, snake)
-    //Note: this requires a lock in Controller::Changedirection 
+    //Note: A mutex/lock is used in Controller::Changedirection 
     std::future<void> ftr1 = std::async(&Controller::HandleInput,&controller,std::ref(running),std::ref(snake));
     
     //Thread 2 runs Game::Update()
     std::future<void> ftr2 = std::async(&Game::Update, this, std::ref(poison));
     
     //Thread 3 runs renderer.Render(snake,food)
-    // Note: this requires a lock in Renderer::Render
+    // Note: A mutex/lock is used in Renderer::Render
     std::future<void> ftr3 = std::async(&Renderer::Render, &renderer, std::ref(snake), std::ref(food), poison.GetPoison());
     
     ftr1.wait();
@@ -103,7 +102,6 @@ void Game::Update(Poison &poison) {
     snake.GrowBody();
     snake.speed += 0.01;
   }
-    //else if (poison.point.x == new_x && poison.point.y == new_y) {
     else if (poison.PoisonCell(new_x, new_y)) {
     snake.alive = false;
     gameover = true;
