@@ -2,6 +2,7 @@
 #include "controller.h"
 #include "game.h"
 #include "renderer.h"
+#include "poison2.h"
 
 int main() {
   constexpr std::size_t kFramesPerSecond{60};
@@ -13,13 +14,16 @@ int main() {
 
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
-  //Controller* ptr = & controller;
+  Poison poison(kGridWidth, kGridHeight);
+  Game game(kGridWidth, kGridHeight, poison);
+  
+  game.Run(controller, std::move(renderer), poison, kMsPerFrame);
 
-  Game game(kGridWidth, kGridHeight);
-  //game.Run(controller, renderer, kMsPerFrame);
-  game.Run(controller, std::move(renderer), kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
+  
+  if(game.gameover == true) {std::cout << "Game over.You ate the poison! \n";}
+
   return 0;
 }
