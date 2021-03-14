@@ -47,26 +47,26 @@ In this project, you can build your own C++ application or extend this Snake gam
 19. Mutexes and locks are used in the project.
 
 
-1. is implemented in poison2.cpp lines 14 through 55
+Point 1. is implemented in poison2.cpp lines 14 through 55
 
-2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison
+Point 2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison
 Member getter function e.g. poison2.cpp lines 52 -55
 
-3. is implemented in poison2.h lines 8 through 28
+Point 3. is implemented in poison2.h lines 8 through 28
 
-4. is implemented in poison2.cpp lines 6 through 11
+Ppint 4. is implemented in poison2.cpp lines 6 through 11
 
-5. is implemented in poison2.cpp line 11
+Point 5. is implemented in poison2.cpp line 11
 
-6. is implemented in renderer.cpp lines 50 through 90
+Point 6. is implemented in renderer.cpp lines 50 through 90
 
-7. is implemented in main.cpp line 20
+Ppint 7. is implemented in main.cpp line 20
 
-8. is implemented in renderer.cpp line 24 and 34
+Point 8. is implemented in renderer.cpp line 24 and 34
 
-9. is implemented in game.cpp line 34 through 47
+Point 9. is implemented in game.cpp line 34 through 47
 
-10. is implemented in controller.cpp line 24, renderer.cpp line 104, 132
+Point 10. is implemented in controller.cpp line 24, renderer.cpp line 104, 132
 
 
 
