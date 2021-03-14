@@ -9,7 +9,6 @@ class Controller {
  public:
   void HandleInput(bool &running, Snake &snake) const;
 
-  //void HandleInput(bool &running, Snake &snake, std::promise<Snake::Direction> &&prms) const;  
   void HandleInputp(bool &running, Snake &snake, std::promise<Snake::Direction> &&prms) const;
 
  private:
