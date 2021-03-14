@@ -15,6 +15,13 @@ The base code from CppND-Capstone-Snake-Game GitHub repository is modified to ad
 Poison pallets (red) are randomly placed on the field, the snake dies if it hits one of them. The poison pallets change position whenever the snake eats food (yellow).
 Another added feature is multithreading, see details below.
 
+The Snake game code consists of five main classes: Game, Snake, Controller, Renderer and Poison.
+To begin, main creates a Controller, a Game, and a Renderer object. Game stores a Snake object as part of the state.
+Main calls Game::Run to start the game loop.
+
+
+
+
 ## 10 C++ features have been implemented in this project:
 
 1. A variety of control structures are used in the project. The project code is organized into functions.
