@@ -1,23 +1,23 @@
 #include "game.h"
+#include "poison2.h"
 #include <iostream>
 #include <thread>
 #include <future>
 #include <string>
-#include "SDL.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height)
+Game::Game(std::size_t grid_width, std::size_t grid_height, Poison &poison )
     : snake(grid_width, grid_height),
       engine(dev()),
       random_w(1, static_cast<int>(grid_width-1)),
-      random_h(1, static_cast<int>(grid_height-1)) {
+      random_h(1, static_cast<int>(grid_height-1))
+       { 
   PlaceFood();
+  poison.PlacePoison(snake, food);
 }
 
-//void Game::Run(Controller const &controller, Renderer &renderer,
- //              std::size_t target_frame_duration) {
-//NeW: change &renderer to renderer since renderer is moved
-void Game::Run(Controller  &controller, Renderer renderer,
+void Game::Run(Controller  &controller, Renderer renderer, Poison &poison,
                std::size_t target_frame_duration) {
+
 
   Uint32 title_timestamp = SDL_GetTicks();
   Uint32 frame_start;
@@ -31,30 +31,21 @@ void Game::Run(Controller  &controller, Renderer renderer,
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    //controller.HandleInput(running, snake);
 
-    //NEW start thread controller.HandleInput
-    //std::thread t1(&Controller::HandleInput,controller,std::ref(running),std::ref(snake));
-     //std::thread t1(&Controller::HandleInputp,controller,std::ref(running),std::ref(snake),std::move(prms)); 
-    //t1.join();
-
+    //Thread 1 runs controller.HandleInput(running, snake)
+    //Note: this requires a lock in Controller::Changedirection 
     std::future<void> ftr1 = std::async(&Controller::HandleInput,&controller,std::ref(running),std::ref(snake));
-    //ftr1.wait();
-
-    //Update();
-   //std::thread t2(&Game::Update, this);
-    //std::thread t2(&Game::Updatep, this, std::ref(ftr));
-    //t2.join();
-    std::future<void> ftr2 = std::async(&Game::Update, this);
     
-   
-    //renderer.Render(snake, food);
-    std::future<void> ftr3 = std::async(&Renderer::Render, &renderer, std::ref(snake), std::ref(food));
+    //Thread 2 runs Game::Update()
+    std::future<void> ftr2 = std::async(&Game::Update, this, std::ref(poison));
+    
+    //Thread 3 runs renderer.Render(snake,food)
+    // Note: this requires a lock in Renderer::Render
+    std::future<void> ftr3 = std::async(&Renderer::Render, &renderer, std::ref(snake), std::ref(food), poison.GetPoison());
     
     ftr1.wait();
     ftr2.wait();
     ftr3.wait();
-
 
     frame_end = SDL_GetTicks();
 
@@ -86,7 +77,6 @@ void Game::PlaceFood() {
     y = random_h(engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    //std::lock_guard<std::mutex> lck(mtx_food);
     if (!snake.SnakeCell(x, y)) {
       food.x = x;
       food.y = y;
@@ -95,7 +85,8 @@ void Game::PlaceFood() {
   }
 }
 
-void Game::Update() {
+//Update the game
+void Game::Update(Poison &poison) {
   if (!snake.alive) return;
 
   snake.Update();
@@ -107,12 +98,25 @@ void Game::Update() {
   if (food.x == new_x && food.y == new_y) {
     score++;
     PlaceFood();
+    poison.PlacePoison(snake, food);
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.speed += 0.02;
+    snake.speed += 0.01;
   }
-}
+    //else if (poison.point.x == new_x && poison.point.y == new_y) {
+    else if (poison.PoisonCell(new_x, new_y)) {
+    snake.alive = false;
+    gameover = true;
+  }
+}  
 
+//check if cell is occupied by food
+bool Game::FoodCell(int x, int y) {
+  if (x == static_cast<int>(food.x) && y == static_cast<int>(food.y)) {
+    return true;
+  }
+  return false;
+}
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
