@@ -1,9 +1,6 @@
 ## Snake Game Project
 
-The base code from CppND-Capstone-Snake-Game GitHub repository is modified to add new game features to the snake game. 
-Poison pallets (red) are randomly placed on the field, the snake dies if it hits one of them. The poison pallets change position whenever the snake eats food (yellow).
 
-Another added feature is multi-threading. The game runs on three threads.
 
 ## Basic Build Instructions
 
@@ -13,6 +10,10 @@ Another added feature is multi-threading. The game runs on three threads.
 4. Run it: `./SnakeGame`.
 
 ## Project description
+
+The base code from CppND-Capstone-Snake-Game GitHub repository is modified to add new game features to the snake game. 
+Poison pallets (red) are randomly placed on the field, the snake dies if it hits one of them. The poison pallets change position whenever the snake eats food (yellow).
+Another added feature is multi-threading, see details below.
 
 Following C++ features were implemented in this project:
 
@@ -24,7 +25,7 @@ Following C++ features were implemented in this project:
 11. The project follows the Rule of 5
 13. The project uses move semantics to move data.
 15. The project uses smart pointers. 
-17. The project uses multithreading.
+17. The project uses multi-threading.
 19. Mutexes and locks are used in the project.
 
 
@@ -49,6 +50,22 @@ Feature 8. is implemented in renderer.cpp line 24 and 34
 Feature 9. is implemented in game.cpp line 34 through 47
 
 Feature 10. is implemented in controller.cpp line 24, renderer.cpp line 104, 132
+
+
+
+Multi Threading: 
+
+Multi threading consists of 3 threads within the game loop. Various mutexes and locks are used to protect data which is shared across threads.
+
+Thread 1 (started in game.cpp, line 36) runs controller.Handleinput. This requires a mutex/lock (in controller.cpp line 24) to avoid a data race with thread 2. The mutex/lock protects variable Snake::Direction.
+ 
+Thread 2 (started in game.cpp, line 39) runs Game Update. 
+
+Thread 3 (started in game.cpp, line 43) runs Renderer. This requires a mutex/lock (in renderer.cpp line 104) to avoid a data race with thread 2. 
+
+
+
+
 
 
 
