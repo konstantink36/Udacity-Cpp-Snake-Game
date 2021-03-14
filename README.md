@@ -33,11 +33,8 @@ In this project, you can build your own C++ application or extend this Snake gam
 ## Project description
 
 1. A variety of control structures are used in the project. The project code is organized into functions.
-
 3. Appropriate data and functions are grouped into classes. Data is accessed via member functions.
-
 5. All class data members are explicitly specified as public, protected, or private.
-
 7. Class constructors utilize member initialization lists.
 9. The project makes use of references in function declarations.
 11. The project follows the Rule of 5
@@ -47,6 +44,7 @@ In this project, you can build your own C++ application or extend this Snake gam
 19. Mutexes and locks are used in the project.
 
 
+
 Point 1. is implemented in poison2.cpp lines 14 through 55
 
 Point 2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison
@@ -54,7 +52,7 @@ Member getter function e.g. poison2.cpp lines 52 -55
 
 Point 3. is implemented in poison2.h lines 8 through 28
 
-Ppint 4. is implemented in poison2.cpp lines 6 through 11
+Point 4. is implemented in poison2.cpp lines 6 through 11
 
 Point 5. is implemented in poison2.cpp line 11
 
