@@ -3,6 +3,7 @@ ifndef SNAKE_H
 
 #include <vector>
 #include "SDL.h"
+#include <mutex>
 
 class Snake {
  public:
@@ -35,6 +36,9 @@ class Snake {
   bool growing{false};
   int grid_width;
   int grid_height;
+
+  //mutable std::mutex mtx_head;	
+
 };
 
 #endif
