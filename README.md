@@ -47,8 +47,8 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 Point 1. is implemented in poison2.cpp lines 14 through 55
 
-Point 2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison
-Member getter function e.g. poison2.cpp lines 52 -55
+Point 2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison.
+           Member getter function e.g. poison2.cpp lines 52 -55
 
 Point 3. is implemented in poison2.h lines 8 through 28
 
@@ -58,7 +58,7 @@ Point 5. is implemented in poison2.cpp line 11
 
 Point 6. is implemented in renderer.cpp lines 50 through 90
 
-Ppint 7. is implemented in main.cpp line 20
+Point 7. is implemented in main.cpp line 20
 
 Point 8. is implemented in renderer.cpp line 24 and 34
 
