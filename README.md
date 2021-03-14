@@ -1,27 +1,6 @@
-# CPPND: Capstone Snake Game Example
+## Snake Game Project
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
-<img src="snake_game.gif"/>
-
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
-
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
-
-## Dependencies for Running Locally
-* cmake >= 3.7
-  * All OSes: [click here for installation instructions](https://cmake.org/install/)
-* make >= 4.1 (Linux, Mac), 3.81 (Windows)
-  * Linux: make is installed by default on most Linux distros
-  * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
-  * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
-* SDL2 >= 2.0
-  * All installation instructions can be found [here](https://wiki.libsdl.org/Installation)
-  * Note that for Linux, an `apt` or `apt-get` installation is preferred to building from source.
-* gcc/g++ >= 5.4
-  * Linux: gcc / g++ is installed by default on most Linux distros
-  * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
-  * Windows: recommend using [MinGW](http://www.mingw.org/)
 
 ## Basic Build Instructions
 
@@ -31,6 +10,8 @@ In this project, you can build your own C++ application or extend this Snake gam
 4. Run it: `./SnakeGame`.
 
 ## Project description
+
+Following C++ features were implemented in this project:
 
 1. A variety of control structures are used in the project. The project code is organized into functions.
 3. Appropriate data and functions are grouped into classes. Data is accessed via member functions.
@@ -45,26 +26,26 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 
 
-Criterion 1. is implemented in poison2.cpp lines 14 through 55
+Feature 1. is implemented in poison2.cpp lines 14 through 55
 
-Criterion 2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison.
+Feature 2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison.
            Member getter function e.g. poison2.cpp lines 52 -55
 
-Criterion 3. is implemented in poison2.h lines 8 through 28
+Feature 3. is implemented in poison2.h lines 8 through 28
 
-Criterion 4. is implemented in poison2.cpp lines 6 through 11
+Feature 4. is implemented in poison2.cpp lines 6 through 11
 
-Criterion 5. is implemented in poison2.cpp line 11
+Feature 5. is implemented in poison2.cpp line 11
 
-Criterion 6. is implemented in renderer.cpp lines 50 through 90
+Feature 6. is implemented in renderer.cpp lines 50 through 90
 
-Criterion 7. is implemented in main.cpp line 20
+Feature 7. is implemented in main.cpp line 20
 
-Criterion 8. is implemented in renderer.cpp line 24 and 34
+Feature 8. is implemented in renderer.cpp line 24 and 34
 
-Criterion 9. is implemented in game.cpp line 34 through 47
+Feature 9. is implemented in game.cpp line 34 through 47
 
-Criterion 10. is implemented in controller.cpp line 24, renderer.cpp line 104, 132
+Feature 10. is implemented in controller.cpp line 24, renderer.cpp line 104, 132
 
 
 
