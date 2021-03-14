@@ -70,6 +70,11 @@ Thread 2 (started in game.cpp, line 39) runs Game Update.
 
 Thread 3 (started in game.cpp, line 43) runs Renderer. This requires a mutex/lock (in renderer.cpp line 104) to avoid a data race with thread 2. 
 
+## Other
+The number of poison pallets is set to three, to make the game not too difficult. 
+Ity could be set higher by changing poison2.cpp line 17 (use higher number than 3 in:  for(std::size_t i=0; i<3; i++) )
+
+
 
 
 
