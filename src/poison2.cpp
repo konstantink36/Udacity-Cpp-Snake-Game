@@ -11,7 +11,7 @@ Poison::Poison(std::size_t grid_width, std::size_t grid_height)
        } 
 
 //Place poison at random points and put in vector
-void Poison::PlacePoison(Snake & snake, SDL_Point food) {
+void Poison::PlacePoison(Snake & snake, SDL_Point & food) {
       SDL_Point point;
       poison_vector.clear();
       for(std::size_t i=0; i<3; i++){
