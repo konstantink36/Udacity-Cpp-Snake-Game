@@ -40,13 +40,13 @@ Main calls Game::Run to start the game loop.
 Feature 1. is implemented in poison2.cpp lines 17, 19, 22
 
 Feature 2. is implemented that the Snake game code consists of 5 main classes: Game, Snake, Controller, Renderer and Poison.
-            e.g. poison2.cpp line 52 -55
+            access member function e.g. poison2.cpp, lines 52 though 55
 
 Feature 3. is implemented in poison2.h lines 8 through 28
 
 Feature 4. is implemented in poison2.cpp lines 6 through 11
 
-Feature 5. is implemented in poison2.cpp line 11
+Feature 5. is implemented in poison2.cpp line 14
 
 Feature 6. is implemented in renderer.cpp lines 50 through 90
 
@@ -54,7 +54,7 @@ Feature 7. is implemented in main.cpp line 20
 
 Feature 8. is implemented in renderer.cpp line 24 and 34
 
-Feature 9. is implemented in game.cpp line 34 through 47
+Feature 9. is implemented in game.cpp lines 36, 39, 43
 
 Feature 10. is implemented in controller.cpp line 24, renderer.cpp line 104, 132
 
