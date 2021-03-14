@@ -1,3 +1,6 @@
+#ifndef POISON2_H
+#define POISON2_H
+
 #include "snake.h"
 #include <vector>
 #include <random>
