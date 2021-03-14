@@ -1,6 +1,9 @@
 ## Snake Game Project
 
+The base code from CppND-Capstone-Snake-Game GitHub repository is modified to add new game features to the snake game. 
+Poison pallets (red) are randomly placed on the field, the snake dies if it hits one of them. The poison pallets change position whenever the snake eats food (yellow).
 
+Another added feature is multi-threading. The game runs on three threads.
 
 ## Basic Build Instructions
 
