@@ -1,6 +1,6 @@
 ## Snake Game Project
 
-<img src="snake_game.gif" width="600" height="450" />
+<img src="snake_game.gif" width="450" height="450" />
 
 ## Basic Build Instructions
 
